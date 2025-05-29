@@ -1,11 +1,29 @@
 /* 🎨 Définir les couleurs et variables globales */
+.nabla-special {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 100;
+}
+
+.funnel-display {
+  font-family: "Funnel Display", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --background-color: #f8f9fa;
-  --text-color: #212529;
-  --font-family: 'Arial', sans-serif;
-  --spacing: 1rem;
+  --primary-color: #0df88a;
+  --secondary-color: #8ae9bd;
+  --background-color: #f2f2f2;
+  --text-color: #212121;
+  --borderLine: 2px solid var(--text-color);
+  --texteFont: "Funnel Display", sans-serif;
+  --boldtWeight: 800;
+  --mediumWeight: 600;
+  --lightWeight: 400;
 }
 
 /* 🌍 Appliquer à tout le site */
@@ -16,13 +34,15 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--texteFont);
   background-color: var(--background-color);
   color: var(--text-color);
+  font-weight: var(--lightWeight);
   line-height: 1.6;
-  padding: var(--spacing);
   min-height: 100vh;
+  margin-top: 80px;
 }
+
 
 /* Pour s’assurer que les liens n'ont pas de soulignement */
 a {
@@ -39,6 +59,38 @@ button {
 
 a:hover {
   text-decoration: underline;
+}
+
+a {
+  position: relative;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px; /* Épaisseur du soulignement */
+  bottom: -3px;
+  right: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease, right 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+  right: 0;
+}
+
+a:active,
+a.active { /* Ajout de .active pour gestion via React Router */
+  color: var(--secondary-color); /* Changement de couleur du texte */
+}
+
+a:active::after,
+a.active::after {
+  background-color: var(--secondary-color); /* Changement de couleur de la ligne */
 }
 
 /* Optionnel : style global pour les images et formulaires */
@@ -59,22 +111,76 @@ input, button, textarea {
 
 /** HEADER **/
 .header {
+  background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: #f5f5f5;
+  padding: 20px 40px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--text-color);
+  z-index: 99999;
 }
+
+.header.shrink {
+  padding: 10px 30px; /* Réduit la taille */
+}
+
 
 .logo {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: var(--boldtWeight);
 }
 
 .nav a {
   margin-left: 1rem;
   text-decoration: none;
-  color: black;
+  font-weight: var(--mediumtWeight);
 }
 
 /** HEADER **/
+
+/** HERO SECTION **/
+.heroSection {
+  width: 100vw;
+  height: 60vh;
+  border-bottom: var(--borderLine);
+}
+
+.heroTxt {
+  position: relative;
+  top: 10vh;
+  left: 5vw;
+  width: 550px;
+  overflow: hidden;
+  font-size: 1.5rem;
+}
+
+.heroTxt p {
+  font-weight: var(--boldtWeight);
+}
+
+
+
+.heroBtn {
+  margin: 40px ;
+  font-size: 0.7em;
+  padding: 0.4em 1em;
+  font-weight: var(--boldtWeight);
+  background-color: var(--background-color);
+  border: var(--borderLine);
+  border-radius: 4em;
+  transition: all 0.3s ease;
+}
+
+.heroBtn:hover {
+  transform: scale(1.1); /* Zoom sur le bouton */
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+
+/** HERO SECTION **/
