@@ -15,11 +15,10 @@
 }
 
 :root {
-  --primary-color: #0df88a;
-  --secondary-color: #8ae9bd;
-  --background-color: #f2f2f2;
-  --text-color: #212121;
-  --borderLine: 2px solid var(--text-color);
+  --primary-color: #212121;
+  --secondary-color: #FFA500;
+  --third-color: #f2f2f2;
+  --borderLine: 2px solid var(--primary-color);
   --texteFont: "Funnel Display", sans-serif;
   --boldtWeight: 800;
   --mediumWeight: 600;
@@ -35,8 +34,8 @@
 
 body {
   font-family: var(--texteFont);
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--third-color);
+  color: var(--primary-color);
   font-weight: var(--lightWeight);
   line-height: 1.6;
   min-height: 100vh;
@@ -58,40 +57,43 @@ button {
 }
 
 a:hover {
-  text-decoration: underline;
-}
-
-a {
-  position: relative;
-  color: var(--text-color);
   text-decoration: none;
 }
 
-a::after {
+.link-style {
+  position: relative;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.link-style::after {
   content: "";
   position: absolute;
   width: 0;
-  height: 2px; /* Épaisseur du soulignement */
+  height: 2px;
   bottom: -3px;
   right: 0;
   background-color: currentColor;
   transition: width 0.3s ease, right 0.3s ease;
 }
 
-a:hover::after {
+.link-style:hover::after {
   width: 100%;
   right: 0;
 }
 
-a:active,
-a.active { /* Ajout de .active pour gestion via React Router */
-  color: var(--secondary-color); /* Changement de couleur du texte */
+.link-style-active {
+  color: var(--secondary-color);
 }
 
-a:active::after,
-a.active::after {
-  background-color: var(--secondary-color); /* Changement de couleur de la ligne */
+.link-style-active::after {
+  width: 100%;
+  right: 0;
+  background-color: var(--secondary-color);
 }
+
+
+
 
 /* Optionnel : style global pour les images et formulaires */
 img {
@@ -111,7 +113,7 @@ input, button, textarea {
 
 /** HEADER **/
 .header {
-  background-color: var(--background-color);
+  background-color: var(--third-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -121,7 +123,7 @@ input, button, textarea {
   align-items: center;
   padding: 20px 40px;
   transition: all 0.3s ease;
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
   z-index: 99999;
 }
 
@@ -131,14 +133,32 @@ input, button, textarea {
 
 
 .logo {
+  color: var(--secondary-color);
   font-size: 1.5rem;
   font-weight: var(--boldtWeight);
 }
 
 .nav a {
   margin-left: 1rem;
-  text-decoration: none;
   font-weight: var(--mediumtWeight);
+}
+
+.lang-switch-btn {
+  color: var(----primary-color);
+  font-weight: var(--boldtWeight);
+  margin: auto 2px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.lang-switch-btn.active {
+  color: var(--secondary-color);
+  font-size: 0.9em;
+}
+
+.nav span {
+  margin-left: 15px;
 }
 
 /** HEADER **/
@@ -146,13 +166,13 @@ input, button, textarea {
 /** HERO SECTION **/
 .heroSection {
   width: 100vw;
-  height: 60vh;
+  height: 500px;
   border-bottom: var(--borderLine);
 }
 
 .heroTxt {
   position: relative;
-  top: 10vh;
+  top: 7vh;
   left: 5vw;
   width: 550px;
   overflow: hidden;
@@ -163,14 +183,12 @@ input, button, textarea {
   font-weight: var(--boldtWeight);
 }
 
-
-
 .heroBtn {
   margin: 40px ;
   font-size: 0.7em;
   padding: 0.4em 1em;
   font-weight: var(--boldtWeight);
-  background-color: var(--background-color);
+  background-color: var(--third-color);
   border: var(--borderLine);
   border-radius: 4em;
   transition: all 0.3s ease;

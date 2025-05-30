@@ -1,6 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const handleScroll = () => {
     const target = document.getElementById("MyWork");
     if (target) {
@@ -16,10 +22,8 @@ function Home() {
     <>
       <div className="heroSection">
         <div className="heroTxt">
-          <p>I’m Aurelien, a freelancer specializing in creating fully responsive websites for artisans. I work with craftsmen and small businesses, offering complete digital solutions, from showcase websites to e-commerce platforms.</p>
-          <button className='heroBtn' onClick={handleScroll}>
-            See My Work
-          </button>
+          <p>{t('heroTxt')}</p>
+          <button className='heroBtn' onClick={handleScroll}>{t('hetBtn')}</button>
         </div>
       </div>
 
