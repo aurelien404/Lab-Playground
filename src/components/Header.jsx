@@ -36,10 +36,10 @@ function Header() {
     <header className={`header ${isShrunk ? 'shrink' : ''}`}>
       <div className="logo">aurelienj.</div>
       <nav className="nav">
-        <Link to="/" className={`link-style ${location.pathname === '/' ? 'link-style-active' : ''}`}>Home</Link>
+        <Link to="/" className={`link-style ${location.pathname === '/' ? 'link-style-active' : ''}`}>{t('home')}</Link>
         <Link to="/services" className={`link-style ${location.pathname === '/services' ? 'link-style-active' : ''}`}>Services</Link>
         <Link to="/contact" className={`link-style ${location.pathname === '/contact' ? 'link-style-active' : ''}`}>Contact</Link>
-        
+
         <span>
           <button className={`lang-switch-btn ${currentLang === 'fr' ? 'active' : ''}`} onClick={() => changeLanguage('fr')}>FR</button>
           <button className={`lang-switch-btn ${currentLang === 'en' ? 'active' : ''}`} onClick={() => changeLanguage('en')}>EN</button>

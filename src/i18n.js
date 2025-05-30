@@ -12,6 +12,7 @@ i18n
             home: "Home",
             heroTxt: "I'm Aurelien, a freelancer specializing in creating fully responsive websites for artisans. I work with craftsmen and small businesses, offering complete digital solutions, from showcase websites to e-commerce platforms.",
             hetBtn: "See My Work",
+            CopyR: "All rights reserved",
         }
       },
       fr: {
@@ -19,6 +20,7 @@ i18n
             home: "Accueil",
             heroTxt: "Je m'appelle Aurélien, je suis un freelance spécialisé dans la création de sites web entièrement responsives pour les artisans. Je travaille avec des artisans et des petites entreprises, offrant des solutions digitales complètes, allant des sites vitrines aux plateformes e-commerce.",
             hetBtn: "Mes Projets",
+            CopyR: "Tous droits réservés",
         }
       }
     },
