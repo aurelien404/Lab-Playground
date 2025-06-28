@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "../api/axios"; // adjust path if needed
+import axios from "../api/axios";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -13,11 +14,21 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await axios.post("/login", { email, password });
-      console.log("Login success:", response.data);
+      await axios.get("/sanctum/csrf-cookie");
 
-      // store user/token if needed
-      // then navigate to dashboard
+      const csrfToken = Cookies.get("XSRF-TOKEN");
+
+      const response = await axios.post(
+        "/login",
+        { email, password },
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrfToken,
+          },
+        }
+      );
+
+      console.log("Login success:", response.data);
       navigate("/dashboard");
     } catch (err) {
       if (err.response && err.response.data.message) {

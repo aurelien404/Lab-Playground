@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+body {
+  background-color: black;
+  color: bisque;
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+button {
+  transition: all ease-out 150ms;
+  @apply px-6 py-2 border-2 rounded hover:scale-110 active:scale-90;
+}
+
+.hoover {
+  transition: all ease-out 150ms;
+  @apply hover:scale-110 active:scale-90;
+}

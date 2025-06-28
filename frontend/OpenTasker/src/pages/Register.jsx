@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -21,9 +22,18 @@ export default function Register() {
     setError("");
 
     try {
-      const response = await axios.post("/register", form);
+      await axios.get("/sanctum/csrf-cookie");
+
+      const csrfToken = Cookies.get("XSRF-TOKEN");
+
+      const response = await axios.post("/register", form, {
+        headers: {
+          "X-XSRF-TOKEN": csrfToken,
+        },
+      });
+
       console.log("Registration success:", response.data);
-      navigate("/dashboard"); // or redirect to login
+      navigate("/login");
     } catch (err) {
       if (err.response && err.response.data.message) {
         setError(err.response.data.message);

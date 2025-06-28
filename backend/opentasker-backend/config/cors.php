@@ -31,4 +31,7 @@ return [
 
     'supports_credentials' => true,
 
+    'paths' => ['api/*', 'login', 'register', 'sanctum/csrf-cookie'],
+    
+    'allowed_origins' => ['http://localhost:5173'],
 ];
