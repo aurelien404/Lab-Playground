@@ -44,19 +44,18 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="h-screen flex items-center justify-center">
       <form
         onSubmit={handleRegister}
-        className="bg-white p-6 rounded shadow-md w-80 space-y-4"
+        className="flex flex-col w-5/6 md:w-1/4 items-center justify-center gap-4"
       >
-        <h2 className="text-xl font-semibold text-center">Register</h2>
+        <h1 className="mb-5">Register</h1>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error && <p className="text-red-350 text-sm">{error}</p>}
 
         <input
           type="text"
           name="name"
-          className="w-full border px-3 py-2 rounded"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
@@ -66,7 +65,6 @@ export default function Register() {
         <input
           type="email"
           name="email"
-          className="w-full border px-3 py-2 rounded"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
@@ -76,7 +74,6 @@ export default function Register() {
         <input
           type="password"
           name="password"
-          className="w-full border px-3 py-2 rounded"
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
@@ -86,17 +83,13 @@ export default function Register() {
         <input
           type="password"
           name="password_confirmation"
-          className="w-full border px-3 py-2 rounded"
           placeholder="Confirm Password"
           value={form.password_confirmation}
           onChange={handleChange}
           required
         />
 
-        <button
-          type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
-        >
+        <button type="submit" className="w-1/2 mt-8">
           Register
         </button>
       </form>

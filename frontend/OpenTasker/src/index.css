@@ -1,12 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-funnel: "Funnel Display", sans-serif;
+
+  --color-zzbase: #212121;
+  --color-zzcontrast: #fff;
+  --color-zzlink: #625deb;
+}
 
 body {
   background-color: black;
   color: bisque;
+  @apply font-(family-name:--font-funnel);
 }
 
 h1 {
-  @apply text-3xl font-bold;
+  @apply text-2xl md:text-3xl font-extrabold;
 }
 
 input,
@@ -16,12 +26,11 @@ button {
   cursor: pointer;
 }
 
-button {
-  transition: all ease-out 150ms;
-  @apply px-6 py-2 border-2 rounded hover:scale-110 active:scale-90;
+input {
+  @apply w-full border-b-2 px-4 py-3;
 }
 
-.hoover {
+button {
   transition: all ease-out 150ms;
-  @apply hover:scale-110 active:scale-90;
+  @apply px-8 py-4 md:px-6 md:py-2 border-2 rounded hover:scale-110 active:scale-90 font-bold;
 }
